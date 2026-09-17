@@ -126,8 +126,13 @@ class App(ctk.CTk):
                 return
                 
         if not os.path.exists(auth_file):
-            self.log("HATA: headers_auth.json veya headers.txt bulunamadı.")
-            self.log("Lütfen tarayıcıdan kopyaladığınız çerezleri headers.txt dosyasına yapıştırın.")
+            if not os.path.exists("headers.txt"):
+                self.log("HATA: headers.txt bulunamadı.")
+                self.log("Senin için projeye boş bir 'headers.txt' dosyası oluşturuyorum...")
+                with open("headers.txt", "w", encoding="utf-8") as f:
+                    f.write("# Lütfen YouTube Music (Network) sekmesinden kopyaladığınız çerezleri (headers) buraya yapıştırın.\n")
+            
+            self.log("Lütfen klasördeki 'headers.txt' dosyasına çerezleri yapıştırın ve uygulamayı tekrar çalıştırın.")
             return
             
         try:
