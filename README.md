@@ -16,9 +16,13 @@ Bu proje, Spotify'daki çalma listelerinizi saniyeler içinde YouTube Music hesa
 2. F12 tuşuna basarak (veya Sağ Tık -> İncele) **Geliştirici Araçlarını** açın.
 3. **Network (Ağ)** sekmesine geçin. Sayfayı yenileyin (F5).
 4. Sol taraftaki isimlerden `browse` veya `next` gibi bir isteği bulup sağ tıklayın: `Copy` -> `Copy as cURL (bash)`.
-5. Kopyaladığınız bu metnin içindeki (sadece `-H` ile başlayan) header kısımlarını proje klasöründeki `headers.txt` dosyasının içine yapıştırın ve kaydedin. *(Not: Her iki kullanım yöntemi de bu dosyayı otomatik olarak okuyup JSON'a çevirecektir).*
+5. Proje klasöründe **`headers.txt` adında yeni bir dosya oluşturun**.
+6. Kopyaladığınız bu metnin içindeki (sadece `-H` ile başlayan) header kısımlarını oluşturduğunuz `headers.txt` dosyasının içine yapıştırın ve kaydedin. *(Not: Her iki kullanım yöntemi de bu dosyayı otomatik olarak okuyup JSON'a çevirecektir).*
 
-> Eğer arayüzü kullanacaksanız ek olarak şu kütüphaneyi kurun: `pip install customtkinter`
+Gerekli kütüphaneleri kurmak için:
+```bash
+pip install -r requirements.txt
+```
 
 ---
 
