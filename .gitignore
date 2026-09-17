@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+
+# Temporary Files
+*.spotdl
+temp_curl.txt
+
+# Private Credentials and API Files
+headers.txt
+headers_auth.json
+oauth.json
