@@ -37,10 +37,7 @@ def main():
             return
             
     if not os.path.exists(auth_file):
-        if not os.path.exists("headers.txt"):
-            print("HATA: headers.txt bulunamadı. Sizin için otomatik olarak boş bir 'headers.txt' oluşturuldu.")
-            with open("headers.txt", "w", encoding="utf-8") as f:
-                f.write("# Lütfen YouTube Music (Network) sekmesinden kopyaladığınız çerezleri (headers) buraya yapıştırın.\n")
+        print(f"HATA: {auth_file} veya headers.txt dosyası bulunamadı!")
         print("Lütfen klasördeki 'headers.txt' dosyasına çerezleri yapıştırın ve uygulamayı tekrar çalıştırın.")
         return
         

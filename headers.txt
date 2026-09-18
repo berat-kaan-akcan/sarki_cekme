@@ -1,1 +1,35 @@
-# Lütfen YouTube Music (Network) sekmesinden kopyaladýðýnýz çerezleri (headers) buraya yapýþtýrýn.
+accept: */*
+accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+authorization: SAPISIDHASH 1789688294_a4a8cb9dbcfadb67f89fc9e7bb9b563435599be5_u SAPISID1PHASH 1789688294_a4a8cb9dbcfadb67f89fc9e7bb9b563435599be5_u SAPISID3PHASH 1789688294_a4a8cb9dbcfadb67f89fc9e7bb9b563435599be5_u
+content-encoding: gzip
+content-type: application/json
+origin: https://music.youtube.com
+priority: u=1, i
+referer: https://music.youtube.com/library
+sec-ch-ua: ^\
+sec-ch-ua-arch: ^\
+sec-ch-ua-bitness: ^\
+sec-ch-ua-form-factors: ^\
+sec-ch-ua-full-version: ^\
+sec-ch-ua-full-version-list: ^\
+sec-ch-ua-mobile: ?0
+sec-ch-ua-model: ^\
+sec-ch-ua-platform: ^\
+sec-ch-ua-platform-version: ^\
+sec-ch-ua-wow64: ?0
+sec-fetch-dest: empty
+sec-fetch-mode: same-origin
+sec-fetch-site: same-origin
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36
+x-browser-channel: stable
+x-browser-copyright: Copyright 2026 Google LLC. All Rights Reserved.
+x-browser-validation: vgyhv7tDQEn+LFULEOyfsn7nRqI=
+x-browser-year: 2026
+x-client-data: CKmdygEIkqHLAQiFoM0BCIPllDAIlueUMBin3pQw
+x-goog-authuser: 0
+x-goog-visitor-id: CgtEamE4UTdLLUw4QSj2xKzVBjIKCgJUUhIEGgAgD2LfAgrcAjIxLllUPWNfNEFMYTVENzc5NWRYZWxyeUZVeGxfbmdKUUtvcE9ERlo3Z2Z3WnBubU9UTXp5WURVeWptWWVqeG91Qk42SkstUl95WWRtYy1ZekRXWmhqSUlDdS1mWHJXbVk5NlFjZVR3bTNiUzBaV3VhTkMtLXllV01pdm9COTlaeVpKZlBWTDVkQnEzRi1DX3NYR3NyalFIR29JSm5NTlRLWU5FUnkyZnBiWi1xOHBvNlpPOWRqZUV0UklsNFJqeklYdV9JcXdzd0NGU2NzZ3ZxdDFnb2taNzVHN1ZpSWlEN2tDdDBEVkU2bkpqcXNCQW5nRkR6UmNfNmZ6OGV1bm45SmhDNGhNRXEwVDNpZ0RfZmpDbjZMeUltQ3B6eV9ib0hvM2cxeHdYMXg2SGotMWxIbF9acE96b2xyTVFLTGNyd0hZNjRaRWxOd1kyVVpZMWtmcmZOeFdiM0NRQQ==
+x-origin: https://music.youtube.com
+x-youtube-bootstrap-logged-in: true
+x-youtube-client-name: 67
+x-youtube-client-version: 1.20260915.14.00
+cookie: LOGIN_INFO=AFmmF2swRQIgPwr78kNLjCaPUiEqWn2M8YHYAHzfj_He81PUO3fI8EoCIQD5lvvWNavDUQpZmEQ-XBr1hK_PCfGwoxv4nlYWodOVkQ:QUQ3MjNmekVaZEdCMWVWWlEyNktVNW9SU3NPQmRzampCaUppN0xNZjFZUG9OMnBtNHpSdkU2WGVTRUQ1QlRDazJUcFFtYlBMV2lwTUlCOUNDbG45S010X2ZWUHdEZHl5RHA0QWpFNFdqVzdPLXlaalZKNlNrRXY3NkRZakNObU90cDNpVi1oX0M2TDduWExqVGxRendvOENwdVJoR2lWbXdn; __Secure-BUCKET=CEU; __Secure-YENID=14.YTE=nwb3SOiHHkrKBWqMXwdLOs2waSJb7hpbQ5yIAmhzi6pMqKCg2ZHctgW0eLKZyCEm1UrIZLApKPHEKETWZ_469eQu9xNZl-xBTIeap0gt41VIg000zDyCYffe4lJMybOpUhFCbqhfoHUj13xtoqJEFsLokx_pWaViv_EYGPRXPUlm_89NaMJpaAdKrU_GPHATPBZHYfyhq5ShzsQWGlqQiv4txLJVQN3v1tx0P3_n6U6Sv2WC-Zfzr9qAZM9FAZMcuCgEBUvzLt4MNR7pla6wYipFYEi5iKNQIjSl76uAHlP6G0WhPPk84Uv-g8xGGlbmDgDYkD2Jr-9z5PTJUNKcag; VISITOR_INFO1_LIVE=Dja8Q7K-L8A; VISITOR_PRIVACY_METADATA=CgJUUhIEGgAgDw==; _gcl_au=1.1.891259934.1786661483; SID=g.a000CAk1nJoU2MUwuB4AsMTp0dUMP15Ork4G5b3qILkXSfqjOAZuSefCem8PRTTh3WGIu-MxMQACgYKAQ0SARASFQHGX2MiiTkVPPXHBTUBu8XzxkrwVhoVAUF8yKrPtq3sC5q5EyFBvp6T6jGA0076; __Secure-1PSID=g.a000CAk1nJoU2MUwuB4AsMTp0dUMP15Ork4G5b3qILkXSfqjOAZu9-9BR5bfn4kMl1yhm41VVwACgYKAZISARASFQHGX2MiWTpad7v8JrxsC-xd1RCMYxoVAUF8yKrN6P00y3Lnk94sLiYy-fr-0076; __Secure-3PSID=g.a000CAk1nJoU2MUwuB4AsMTp0dUMP15Ork4G5b3qILkXSfqjOAZuLrwv3OzluUTLh24YMSInTAACgYKAakSARASFQHGX2MiVeCQPWcebDKzhyFzbpS4FBoVAUF8yKp_jWKak1lWmKJvBuo1d8PA0076; HSID=AESm3N_TpMUQXPA89; SSID=AVTcv4EZoK7uDkiix; APISID=Xp5REgPUboT_WqPj/ANdwCnguKZ38LGti9; SAPISID=lH_gl63LnlgfSYjZ/AcQGXu0Y7oNcaReUp; __Secure-1PAPISID=lH_gl63LnlgfSYjZ/AcQGXu0Y7oNcaReUp; __Secure-3PAPISID=lH_gl63LnlgfSYjZ/AcQGXu0Y7oNcaReUp; YSC=NRAHvIoajkQ; PREF=f6=40000080^&volume=15^&f7=100^&tz=Europe.Istanbul^&repeat=NONE^&guide_collapsed=false^&autoplay=true^&f5=30000^&f4=4000000; __Secure-YNID=21.YT=iorGwjk_C5ItLkkEi95q_Asm0MlPfyaVorCe_3X8iELinHA2FhS90QkHmnK_Xi3botfhugQuSICuyl3tZgOLM8ZKEvCNbgU_OooPV1loSnVVx1Ufw4tJ1Ni4ELGNxwFwEVCDcWU2R0RsTaOEn7QqKxxWVaraI0rUv6xdcuevbSNTgicI2yP5mRn0lOYhSB9ypIU9TyHWJ9KgY-nuizqz-L3UsbhOhyGKAVxt4C9WZYWj70M3Hl96wxLKjUTzQ7Nl7ruEut6cAeIg-RMIAN6CKHyiYv8aZvcsTxrpQcuEezcY3E7PW1Bjx5mGZziAPQQJtQhmQeq4DJHjmX5LhESMLw; __Secure-ROLLOUT_TOKEN=COXyyvnBwOizrgEQ94yA2-K8kAMYi-OD-tr2lgM=; __Secure-1PSIDTS=sidts-CjQBXMw41Xi8nXrzrpQE83vDhSu5X8Sb__IAl0l-wiq_ZrubnEujaj2nyg-FcnZxZEbyZb7oEAA; __Secure-3PSIDTS=sidts-CjQBXMw41Xi8nXrzrpQE83vDhSu5X8Sb__IAl0l-wiq_ZrubnEujaj2nyg-FcnZxZEbyZb7oEAA; SIDCC=AKEyXzVbEPD6pZoYdSQyiVUvJ4rJrihvQS6lqxqYbV8IkKClnld7-5-5_WjOPMS_12Nto_XcLAln; __Secure-1PSIDCC=AKEyXzWbuGxi4qqbLQmLL5e0NYzdsUd2ylrydXp4UmqRNhrFmcqSRwvSGkJjXrrqOZ2BJbfp_oYy; __Secure-3PSIDCC=AKEyXzVmG3H4KT5-TR9DIt1buifyL2IaVQ-8wLiZXKTeeeF7EazkuOe9w939BTmkhG7n1dD6WQ

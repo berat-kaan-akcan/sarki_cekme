@@ -16,8 +16,8 @@ Bu proje, Spotify'daki çalma listelerinizi saniyeler içinde YouTube Music hesa
 2. F12 tuşuna basarak (veya Sağ Tık -> İncele) **Geliştirici Araçlarını** açın.
 3. **Network (Ağ)** sekmesine geçin. Sayfayı yenileyin (F5).
 4. Sol taraftaki isimlerden `browse` veya `next` gibi bir isteği bulup sağ tıklayın: `Copy` -> `Copy as cURL (bash)`.
-5. Uygulamayı bir kez çalıştırın. Uygulama size projede otomatik olarak **`headers.txt`** adında boş bir dosya oluşturacaktır.
-6. Kopyaladığınız bu metnin içindeki (sadece `-H` ile başlayan) header kısımlarını veya direkt raw text'i o oluşturulan `headers.txt` dosyasının içine yapıştırın ve kaydedin. *(Not: Uygulama yeniden başlatıldığında bu dosyayı okuyup sisteme giriş yapacaktır).*
+5. Proje klasöründeki boş **`headers.txt`** dosyasını açın.
+6. Kopyaladığınız bu metnin içindeki (sadece `-H` ile başlayan) header kısımlarını veya direkt raw text'i bu `headers.txt` dosyasının içine yapıştırın ve kaydedin. *(Not: Uygulama başlatıldığında bu dosyayı okuyup sisteme giriş yapacaktır).*
 
 Gerekli kütüphaneleri kurmak için:
 ```bash
