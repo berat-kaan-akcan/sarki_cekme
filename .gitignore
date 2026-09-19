@@ -9,6 +9,4 @@ temp_curl.txt
 # Private Credentials and API Files
 headers_auth.json
 oauth.json
-
-headers.txt
 songs.txt
