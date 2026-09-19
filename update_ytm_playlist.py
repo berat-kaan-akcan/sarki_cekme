@@ -21,7 +21,9 @@ def main():
         print("headers.txt bulundu, giriş dosyası (headers_auth.json) oluşturuluyor...")
         try:
             import ytmusicapi
-            ytmusicapi.setup(filepath=auth_file, headers_raw=open("headers.txt", "r", encoding="utf-8").read())
+            import utils
+            headers_raw = utils.get_raw_headers("headers.txt")
+            ytmusicapi.setup(filepath=auth_file, headers_raw=headers_raw)
             print("Giriş dosyası başarıyla oluşturuldu!\n")
         except Exception as e:
             print(f"HATA: headers.txt dönüştürülemedi: {e}")

@@ -11,6 +11,10 @@ def main():
         print("Link boş olamaz!")
         return
         
+    if "spotify.com" not in spotify_url and "spotify.link" not in spotify_url:
+        print("HATA: Lütfen geçerli bir Spotify linki girin!")
+        return
+        
     print("\nSpotify'dan şarkı listesi çekiliyor (Bu işlem listenin uzunluğuna göre biraz sürebilir)...")
     
     temp_file = "temp_songs.spotdl"
@@ -58,6 +62,8 @@ def main():
         print(f"\nBaşarılı! Toplam {count} şarkı 'songs.txt' dosyasına kaydedildi.")
         print("Artık 'python spotify_to_ytm.py' veya 'python update_ytm_playlist.py' çalıştırarak YouTube Music'e aktarabilirsiniz.")
         
+    except json.JSONDecodeError:
+        print("HATA: Spotify linki işlenemedi. Linkin doğru olduğundan ve listenin gizli (private) olmadığından emin olun.")
     except Exception as e:
         print(f"Dosya işlenirken hata oluştu: {e}")
         

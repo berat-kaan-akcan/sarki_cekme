@@ -5,6 +5,7 @@ import json
 import threading
 import time
 import sys
+import tkinter.messagebox as messagebox
 from ytmusicapi import YTMusic
 
 # --- Arayüz Ayarları ---
@@ -100,6 +101,18 @@ class App(ctk.CTk):
         self.textbox.insert("end", message + "\n")
         self.textbox.see("end")
         self.textbox.configure(state="disabled")
+
+    def show_error(self, title, message):
+        self.log(f"HATA: {message}")
+        self.after(0, lambda: messagebox.showerror(title, message))
+
+    def show_info(self, title, message):
+        self.log(message)
+        self.after(0, lambda: messagebox.showinfo(title, message))
+
+    def show_warning(self, title, message):
+        self.log(f"UYARI: {message}")
+        self.after(0, lambda: messagebox.showwarning(title, message))
         
     # Yeni / Mevcut liste seçeneklerini açıp kapatma
     def toggle_options(self):
@@ -119,15 +132,16 @@ class App(ctk.CTk):
             self.log("headers.txt bulundu, giriş dosyası oluşturuluyor...")
             try:
                 import ytmusicapi
-                ytmusicapi.setup(filepath=auth_file, headers_raw=open("headers.txt", "r", encoding="utf-8").read())
-                self.log("Giriş dosyası başarıyla oluşturuldu!")
+                import utils
+                headers_raw = utils.get_raw_headers("headers.txt")
+                ytmusicapi.setup(filepath=auth_file, headers_raw=headers_raw)
+                self.log("Giriş dosyası başarıyla oluşturuldu!\n")
             except Exception as e:
-                self.log(f"headers.txt dönüştürülemedi: {e}")
+                self.show_error("Bağlantı Hatası", f"headers.txt JSON'a dönüştürülemedi.\nLütfen çerezleri doğru kopyaladığınızdan emin olun.\nDetay: {e}")
                 return
                 
         if not os.path.exists(auth_file):
-            self.log("HATA: headers_auth.json veya headers.txt bulunamadı.")
-            self.log("Lütfen klasördeki 'headers.txt' dosyasına çerezleri yapıştırın ve uygulamayı tekrar çalıştırın.")
+            self.show_warning("Giriş Yapılmadı", "YouTube Music hesabınıza bağlanmak için çerezler (headers.txt) bulunamadı.\nLütfen 1. Adımdaki talimatları izleyerek headers.txt dosyasını doldurun ve uygulamayı yeniden başlatın.")
             return
             
         try:
@@ -135,7 +149,7 @@ class App(ctk.CTk):
             self.log("YouTube Music hesabına başarıyla bağlanıldı.")
             self.fetch_playlists()
         except Exception as e:
-            self.log(f"YouTube Music'e bağlanılamadı: {e}")
+            self.show_error("Bağlantı Hatası", f"YouTube Music'e bağlanılamadı. Çerezlerinizin süresi dolmuş olabilir.\nDetay: {e}")
             
     # Kullanıcının mevcut listelerini çekme
     def fetch_playlists(self):
@@ -161,7 +175,11 @@ class App(ctk.CTk):
     def fetch_songs(self):
         url = self.entry_spotify.get().strip()
         if not url:
-            self.log("Lütfen Spotify çalma listesi linki girin!")
+            self.show_warning("Eksik Bilgi", "Lütfen Spotify çalma listesi linki girin!")
+            return
+            
+        if "spotify.com" not in url and "spotify.link" not in url:
+            self.show_error("Geçersiz Link", "Lütfen geçerli bir Spotify linki girin!\nÖrnek: https://open.spotify.com/playlist/...")
             return
             
         self.btn_fetch.configure(state="disabled")
@@ -185,9 +203,8 @@ class App(ctk.CTk):
             )
             
             if not os.path.exists(temp_file):
-                self.log("HATA: Şarkı listesi çekilemedi. Linki kontrol edin.")
-                if result.stderr:
-                    self.log(f"Detay: {result.stderr}")
+                err_detail = result.stderr if result.stderr else "Bilinmeyen Hata"
+                self.show_error("İndirme Hatası", f"Şarkı listesi çekilemedi. Linki kontrol edin veya gizli liste olmadığından emin olun.\nDetay: {err_detail}")
                 self.after(0, lambda: self.btn_fetch.configure(state="normal"))
                 return
                 
@@ -204,12 +221,14 @@ class App(ctk.CTk):
                         out.write(f"{title} {artists}\n")
                         count += 1
                         
-            self.log(f"BAŞARILI: Toplam {count} şarkı başarıyla çekildi!")
+            self.show_info("İşlem Başarılı", f"Toplam {count} şarkı başarıyla çekildi!\nŞimdi 2. Adıma (YouTube'a Aktar) geçebilirsiniz.")
             
         except FileNotFoundError:
-            self.log("HATA: 'spotdl' bilgisayarda kurulu değil.")
+            self.show_error("Eksik Bileşen", "'spotdl' bilgisayarınızda yüklü değil.\nLütfen terminali açıp 'pip install spotdl' komutunu çalıştırın.")
+        except json.JSONDecodeError:
+            self.show_error("Veri Hatası", "Spotify linki işlenemedi (Bozuk Veri).\nLinkin doğru olduğundan ve listenin herkese açık (public) olduğundan emin olun.")
         except Exception as e:
-            self.log(f"Hata oluştu: {e}")
+            self.show_error("Beklenmeyen Hata", f"Şarkılar çekilirken beklenmeyen bir hata oluştu:\n{e}")
         finally:
             if os.path.exists(temp_file): 
                 os.remove(temp_file)
@@ -221,18 +240,18 @@ class App(ctk.CTk):
         
     def transfer_songs(self):
         if not self.yt:
-            self.log("YouTube Music hesabına henüz bağlanılamadı. Lütfen bekleyin veya oauth.json kontrol edin.")
+            self.show_warning("Bağlantı Yok", "YouTube Music hesabınıza henüz bağlanılamadı.\nLütfen çerezlerinizi kontrol edip uygulamayı yeniden başlatın.")
             return
             
         if not os.path.exists("songs.txt"):
-            self.log("HATA: Aktarılacak şarkı bulunamadı. Lütfen önce 1. Adımı (Şarkıları Çek) tamamlayın.")
+            self.show_warning("Şarkı Yok", "Aktarılacak şarkı bulunamadı.\nLütfen önce 1. Adımı (Şarkıları Çek) tamamlayın.")
             return
             
         with open("songs.txt", "r", encoding="utf-8") as f:
             songs = [line.strip() for line in f if line.strip()]
             
         if not songs:
-            self.log("Şarkı listesi boş!")
+            self.show_warning("Boş Liste", "Şarkı listesi boş!\nSpotify linkini kontrol edip şarkıları tekrar çekmeyi deneyin.")
             return
             
         self.btn_transfer.configure(state="disabled")
@@ -247,13 +266,13 @@ class App(ctk.CTk):
                 playlist_id = self.yt.create_playlist(name, "Spotify'dan aktarıldı.")
                 self.log(f"Liste oluşturuldu.")
             except Exception as e:
-                self.log(f"Liste oluşturma hatası: {e}")
+                self.show_error("Liste Oluşturulamadı", f"YouTube'da yeni liste oluşturulurken hata yaşandı:\n{e}")
                 self.after(0, lambda: self.btn_transfer.configure(state="normal"))
                 return
         else:
             selected_str = self.combo_playlists.get()
-            if selected_str not in self.combo_playlists._values:
-                self.log("Hata: Geçersiz liste seçimi.")
+            if selected_str not in self.combo_playlists._values or "bulunamadı" in selected_str or "yükleniyor" in selected_str:
+                self.show_error("Geçersiz Seçim", "Lütfen mevcut çalma listelerinizden geçerli birini seçin.")
                 self.after(0, lambda: self.btn_transfer.configure(state="normal"))
                 return
                 
@@ -285,10 +304,10 @@ class App(ctk.CTk):
                 try:
                     self.yt.add_playlist_items(playlist_id, chunk, duplicates=True)
                 except Exception as e:
-                    self.log(f"Ekleme sırasında hata: {e}")
-            self.log("\nİşlem tamamlandı! Şarkılarınız başarıyla aktarıldı 🎉")
+                    self.log(f"Ekleme sırasında hata (chunk): {e}")
+            self.show_info("Aktarım Tamamlandı", f"İşlem tamamlandı! 🎉\nBulunan {len(video_ids)} şarkı YouTube Music'e başarıyla aktarıldı.")
         else:
-            self.log("Hiçbir şarkı bulunamadı.")
+            self.show_warning("Sonuç Yok", "Aramada hiçbir şarkı bulunamadı.\nBölgesel kısıtlamalar veya şarkıların YouTube'da olmaması sebep olabilir.")
             
         self.after(0, lambda: self.btn_transfer.configure(state="normal"))
 
