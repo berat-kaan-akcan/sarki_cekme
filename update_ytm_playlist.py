@@ -23,6 +23,11 @@ def main():
             import ytmusicapi
             import utils
             headers_raw = utils.get_raw_headers("headers.txt")
+            if not headers_raw.strip():
+                print("HATA: headers.txt dosyası tamamen boş!")
+                print("Lütfen tarayıcınızdan kopyaladığınız çerezleri dosyanın içine yapıştırıp kaydedin ve tekrar deneyin.")
+                return
+                
             ytmusicapi.setup(filepath=auth_file, headers_raw=headers_raw)
             print("Giriş dosyası başarıyla oluşturuldu!\n")
         except Exception as e:

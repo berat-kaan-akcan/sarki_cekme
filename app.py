@@ -134,6 +134,10 @@ class App(ctk.CTk):
                 import ytmusicapi
                 import utils
                 headers_raw = utils.get_raw_headers("headers.txt")
+                if not headers_raw.strip():
+                    self.show_warning("Boş Çerez Dosyası", "headers.txt dosyası tamamen boş!\nLütfen tarayıcınızdan kopyaladığınız çerezleri dosyanın içine yapıştırıp kaydedin ve uygulamayı yeniden başlatın.")
+                    return
+                    
                 ytmusicapi.setup(filepath=auth_file, headers_raw=headers_raw)
                 self.log("Giriş dosyası başarıyla oluşturuldu!\n")
             except Exception as e:
